@@ -38,7 +38,7 @@ import Data.List.NonEmpty
 #endif
 
 #ifdef MIN_VERSION_semigroupoids
-import Data.Functor.Bind
+import Data.Functor.Semimonad
 import Data.Semigroupoid.Static
 #endif
 
@@ -189,8 +189,8 @@ instance Pointed m => Pointed (Static m a) where
 instance Pointed f => Pointed (WrappedApplicative f) where
   point = WrapApplicative . point
 
-instance Pointed (MaybeApply f) where
-  point = MaybeApply . Right
+instance Pointed (MaybeSemiapplicative f) where
+  point = MaybeSemiapplicative . Right
 #endif
 
 #if defined(MIN_VERSION_semigroups) || (MIN_VERSION_base(4,9,0))

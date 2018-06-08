@@ -26,7 +26,7 @@ import Data.Tree
 #endif
 
 #ifdef MIN_VERSION_semigroupoids
-import Data.Functor.Bind
+import Data.Functor.Semimonad
 #endif
 
 
@@ -195,9 +195,9 @@ instance Copointed (Arg a) where
 instance Copointed f => Copointed (WrappedApplicative f) where
   copoint = copoint . unwrapApplicative
 
-instance Copointed f => Copointed (MaybeApply f) where
-  copoint (MaybeApply (Left fa)) = copoint fa
-  copoint (MaybeApply (Right a)) = a
+instance Copointed f => Copointed (MaybeSemiapplicative f) where
+  copoint (MaybeSemiapplicative (Left fa)) = copoint fa
+  copoint (MaybeSemiapplicative (Right a)) = a
 #endif
 
 instance Copointed Par1 where
